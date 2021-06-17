@@ -1,10 +1,13 @@
-package com.example.trabalhocadastro;
+package com.example.trabalhocadastro.adapter;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.trabalhocadastro.R;
+import com.example.trabalhocadastro.dto.Aluno;
 
 import java.util.List;
 

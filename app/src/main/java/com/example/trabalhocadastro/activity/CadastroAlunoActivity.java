@@ -37,8 +37,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         cpf = findViewById(R.id.editCPF);
         telefone = findViewById(R.id.editTelefone);
 //        //TODO Implementar activity_cadastro_aluno.xml para receber as ações de edição
-//        rua = findViewById(R.id.editRua);
-//        numero = findViewById(R.id.editNumero);
+        rua = findViewById(R.id.editRua);
+        numero = findViewById(R.id.editNumero);
 //        bairro = findViewById(R.id.editBairro);
 
         dao = new AlunoDAO(this);
@@ -56,7 +56,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             telefone.setText(aluno.getTelefone());
             rua.setText(aluno.getEndereco().getRua());
             numero.setText(aluno.getEndereco().getNumero());
-            bairro.setText(aluno.getEndereco().getBairro());
+            //bairro.setText(aluno.getEndereco().getBairro());
         }
     }
 
@@ -90,7 +90,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         Endereco endereco = new Endereco();
         endereco.setNumero(numero.getText().toString());
         endereco.setRua(rua.getText().toString());
-        endereco.setBairro(bairro.getText().toString());
+        //endereco.setBairro(bairro.getText().toString());
         aluno.setEndereco(endereco);
     }
 }

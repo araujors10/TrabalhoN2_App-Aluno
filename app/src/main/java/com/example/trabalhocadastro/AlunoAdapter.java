@@ -46,14 +46,23 @@ public class AlunoAdapter extends BaseAdapter {
         TextView cpf = v.findViewById(R.id.txt_cpf);
         TextView telefone = v.findViewById(R.id.txt_telefone);
         TextView cep = v.findViewById(R.id.txt_cep);
-        TextView endereco = v.findViewById(R.id.txt_endereco);
+        TextView logradouro = v.findViewById(R.id.txt_logradouro);
+        TextView complemento = v.findViewById(R.id.txt_complemento);
+        TextView bairro = v.findViewById(R.id.txt_bairro);
+        TextView localidade = v.findViewById(R.id.txt_localidade);
+        TextView estado = v.findViewById(R.id.txt_estado);
 
         Aluno a = alunos.get(i);
         nome.setText(a.getNome());
         cpf.setText(a.getCpf());
         telefone.setText(a.getTelefone());
         cep.setText(a.getCep());
-        endereco.setText(a.getEndereco());
+        logradouro.setText(a.getLogradouro());
+        complemento.setText(a.getComplemento());
+        bairro.setText(a.getBairro());
+        localidade.setText(a.getLocalidade());
+        estado.setText(a.getUf());
+
         return v;
     }
 }

@@ -40,6 +40,14 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         cpf = findViewById(R.id.editCPF);
         telefone = findViewById(R.id.editTelefone);
 
+        //Mascara para o telefone residencial
+        final EditText mask_phone = (EditText) findViewById(R.id.editTelefone);
+        mask_phone.addTextChangedListener(com.example.cadastrodeclientes.Mask.insert("(##)####-####", mask_phone));
+
+        //Mascara para o CPF
+        final EditText mask_cpf = (EditText) findViewById(R.id.editCPF);
+        mask_cpf.addTextChangedListener(com.example.cadastrodeclientes.Mask.insert("###.###.###-##", mask_cpf));
+
         cep = findViewById(R.id.editCep);
         logradouro = findViewById(R.id.txtLogradouro);
         complemento = findViewById(R.id.txtComplemento);
@@ -104,7 +112,69 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         }
     }
 
+    //Validar telefone residencial
+    public static boolean isValidPhoneResid(String valida) {
+        valida = valida.replace("(","");
+        valida = valida.replace(")","");
+        valida = valida.replace("-","");
+
+        if (valida.isEmpty() || valida.length() !=10) return false;
+        return true;
+    }
+
+    //Validar cpf
+    public static boolean isValidCpf(String valida) {
+        valida = valida.replace(".","");
+        valida = valida.replace("-","");
+
+        if (valida.isEmpty() || valida.length() !=11) return false;
+        return true;
+    }
+
     public void salvar(View view){
+
+        if( nome.getText().toString().isEmpty()){
+            Toast.makeText(this, "Campo nome preenchimento OBRIGATÓRIO!", Toast.LENGTH_SHORT).show();
+            nome.requestFocus();
+            return;
+        }
+
+        if(cpf.getText().toString().isEmpty()){
+            Toast.makeText(this, "Campo CPF de preenchimento OBRIGATÓRIO!", Toast.LENGTH_SHORT).show();
+            cpf.requestFocus();
+            return;
+        }
+
+        if(telefone.getText().toString().isEmpty()){
+            Toast.makeText(this, "Campo phone residencial de preenchimento OBRIGATÓRIO!", Toast.LENGTH_SHORT).show();
+            telefone.requestFocus();
+            return;
+        }
+
+        if(cep.getText().toString().isEmpty() && cep.getText().length() < 8){
+            Toast.makeText(this, "Campo CEP de preenchimento OBRIGATÓRIO!", Toast.LENGTH_SHORT).show();
+            cep.requestFocus();
+            return;
+        }
+
+        if(isValidPhoneResid(telefone.getText().toString().trim()) == false){
+
+            Toast.makeText(this, "Phone residencial " + telefone.getText() + " inválido!", Toast.LENGTH_SHORT).show();
+            telefone.setSelection(telefone.getText().length(), 0);
+            telefone.selectAll();
+            telefone.requestFocus();
+            return;
+        }
+
+
+        if(isValidCpf(cpf.getText().toString().trim()) == false){
+
+            Toast.makeText(this, "CPF " + cpf.getText() + " inválido!", Toast.LENGTH_SHORT).show();
+            cpf.setSelection(cpf.getText().length(), 0);
+            cpf.selectAll();
+            cpf.requestFocus();
+            return;
+        }
 
         if (aluno == null){
             //Criando objeto aluno (preencher eles com osvalores dos campos de texto)

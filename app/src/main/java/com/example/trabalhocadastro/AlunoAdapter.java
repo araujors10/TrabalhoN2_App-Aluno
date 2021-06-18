@@ -45,11 +45,15 @@ public class AlunoAdapter extends BaseAdapter {
         TextView nome = v.findViewById(R.id.txt_nome);
         TextView cpf = v.findViewById(R.id.txt_cpf);
         TextView telefone = v.findViewById(R.id.txt_telefone);
+        TextView cep = v.findViewById(R.id.txt_cep);
+        TextView endereco = v.findViewById(R.id.txt_endereco);
 
         Aluno a = alunos.get(i);
         nome.setText(a.getNome());
         cpf.setText(a.getCpf());
         telefone.setText(a.getTelefone());
+        cep.setText(a.getCep());
+        endereco.setText(a.getEndereco());
         return v;
     }
 }

@@ -51,7 +51,7 @@ public class ListarAlunosActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater i = getMenuInflater();
-        //inflar o xml no menu e mostrar onde quero q ele apareca, que no meu caso é no menu mesmoo
+        //inflar o xml no menu e mostrar onde quero q ele apareca, que no meu caso é no menu mesmo
         i.inflate(R.menu.menu_principal, menu);
 
         //SearchView esta recebendo o que foi digitado no menu pesquisar (lupa)

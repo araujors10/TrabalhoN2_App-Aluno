@@ -25,6 +25,8 @@ public class AlunoDAO {
         values.put("nome", aluno.getNome());
         values.put("cpf", aluno.getCpf());
         values.put("telefone", aluno.getTelefone());
+        values.put("cep", aluno.getCep());
+        values.put("endereco", aluno.getEndereco());
         //o tipo do metodo esta como long, pq o metodo inserir devolve pra mim o id do aluno que foi inserido
         return banco.insert("aluno", null, values);
     }
@@ -35,7 +37,7 @@ public class AlunoDAO {
         List<Aluno> alunos = new ArrayList<>();
         //Criar consulta (cursor - como se fosse um ponteiro apontando para uma tabela)
         //Query aqui é como se fosse um consulta padrão, select * from
-        Cursor cursor = banco.query("Aluno", new String[]{"id", "nome", "cpf", "telefone"},
+        Cursor cursor = banco.query("Aluno", new String[]{"id", "nome", "cpf", "telefone", "cep", "endereco"},
                 null, null, null, null, null);
         while (cursor.moveToNext()){
             Aluno a = new Aluno();
@@ -43,6 +45,8 @@ public class AlunoDAO {
             a.setNome(cursor.getString(1));
             a.setCpf(cursor.getString(2));
             a.setTelefone(cursor.getString(3));
+            a.setCep(cursor.getString(4));
+            a.setEndereco(cursor.getString(5));
             alunos.add(a);
         }
         return alunos;
@@ -61,6 +65,8 @@ public class AlunoDAO {
         values.put("nome", aluno.getNome());
         values.put("cpf", aluno.getCpf());
         values.put("telefone", aluno.getTelefone());
+        values.put("cep", aluno.getCep());
+        values.put("endereco", aluno.getEndereco());
         //No lugar do meu interrogação '?' aqui ele passa o meu {a.getId().toString()}
         banco.update("aluno", values,
                 "id = ?", new String[]{aluno.getId().toString()});

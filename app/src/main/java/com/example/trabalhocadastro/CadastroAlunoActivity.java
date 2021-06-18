@@ -14,6 +14,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
     private EditText nome;
     private EditText cpf;
     private EditText telefone;
+    private EditText cep;
+    private EditText endereco;
     private AlunoDAO dao;
 
     //Variavel global
@@ -28,6 +30,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         nome = findViewById(R.id.editNome);
         cpf = findViewById(R.id.editCPF);
         telefone = findViewById(R.id.editTelefone);
+        cep = findViewById(R.id.editCep);
+        endereco = findViewById(R.id.editEndereco);
 
         dao = new AlunoDAO(this);
 
@@ -42,6 +46,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             nome.setText(aluno.getNome());
             cpf.setText(aluno.getCpf());
             telefone.setText(aluno.getTelefone());
+            cep.setText(aluno.getCep());
+            endereco.setText(aluno.getEndereco());
         }
     }
 
@@ -53,6 +59,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             aluno.setNome(nome.getText().toString());
             aluno.setCpf(cpf.getText().toString());
             aluno.setTelefone(telefone.getText().toString());
+            aluno.setCep(cep.getText().toString());
+            aluno.setEndereco(endereco.getText().toString());
             //Criei uma variavel só pra receber o id (long), apenas para ver se funcionou
             long id = dao.inserir(aluno);
             //Mensagem simples
@@ -62,6 +70,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             aluno.setNome(nome.getText().toString());
             aluno.setCpf(cpf.getText().toString());
             aluno.setTelefone(telefone.getText().toString());
+            aluno.setCep(cep.getText().toString());
+            aluno.setEndereco(endereco.getText().toString());
             dao.atualizar(aluno);
             //Mensagem simples
             Toast.makeText(this, "Aluno ATUALIZADO com sucesso!", Toast.LENGTH_SHORT).show();

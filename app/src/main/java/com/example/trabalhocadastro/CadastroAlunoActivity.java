@@ -55,10 +55,6 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         mask_cpf.addTextChangedListener(com.example.cadastrodeclientes.Mask.insert("###.###.###-##", mask_cpf));
 
 
-
-
-
-
         Button botao = findViewById(R.id.btnBuscarCep);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override

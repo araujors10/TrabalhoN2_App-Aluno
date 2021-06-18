@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.trabalhocadastro.db.Conexao;
 import com.example.trabalhocadastro.dto.Aluno;
+import com.example.trabalhocadastro.dto.Avaliacoes;
 import com.example.trabalhocadastro.dto.Endereco;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class AlunoDAO {
 
         //Criar consulta (cursor - como se fosse um ponteiro apontando para uma tabela)
         //Query aqui é como se fosse um consulta padrão, select * from
-        Cursor cursor = banco.query("Aluno", new String[]{"id", "nome", "cpf", "telefone", "rua", "numero, bairro"},
+        Cursor cursor = banco.query("Aluno", new String[]{"id", "nome", "cpf", "telefone", "rua", "numero", "bairro", "trabalho1", "trabalho2", "avaliacao1"},
                 null, null, null, null, null);
 
         while (cursor.moveToNext()) {
@@ -50,10 +51,16 @@ public class AlunoDAO {
             a.setNome(cursor.getString(1));
             a.setCpf(cursor.getString(2));
             cursor.getString(3);
+
             a.setEndereco(new Endereco());
             a.getEndereco().setRua(cursor.getString(4));
             a.getEndereco().setNumero(cursor.getString(5));
             a.getEndereco().setBairro(cursor.getString(6));
+
+            a.setAvaliacoes(new Avaliacoes());
+            a.getAvaliacoes().setTrabalho1(cursor.getDouble(7));
+            a.getAvaliacoes().setTrabalho2(cursor.getDouble(8));
+            a.getAvaliacoes().setAvaliacao1(cursor.getDouble(9));
             alunos.add(a);
         }
 

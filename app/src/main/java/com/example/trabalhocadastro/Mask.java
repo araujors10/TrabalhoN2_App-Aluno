@@ -1,4 +1,4 @@
-package com.example.cadastrodeclientes;
+package com.example.trabalhocadastro;
 
 import android.text.Editable;
 import android.text.TextWatcher;

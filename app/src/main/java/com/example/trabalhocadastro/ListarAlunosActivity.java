@@ -1,11 +1,9 @@
 package com.example.trabalhocadastro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -13,9 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,9 @@ public class ListarAlunosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_alunos);
+
+        //Optamos por apenas vertical o APP
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         listView = findViewById(R.id.lista_alunos);
         dao = new AlunoDAO(this);

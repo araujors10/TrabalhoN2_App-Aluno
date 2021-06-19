@@ -1,6 +1,7 @@
 package com.example.trabalhocadastro;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,18 +36,21 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_aluno);
 
+        //Optamos por apenas vertical o APP
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //Associar xml com os variaveis do java
         nome = findViewById(R.id.editNome);
         cpf = findViewById(R.id.editCPF);
         telefone = findViewById(R.id.editTelefone);
 
-        //Mascara para o telefone residencial
-        final EditText mask_phone = (EditText) findViewById(R.id.editTelefone);
-        mask_phone.addTextChangedListener(com.example.cadastrodeclientes.Mask.insert("(##)####-####", mask_phone));
-
         //Mascara para o CPF
         final EditText mask_cpf = (EditText) findViewById(R.id.editCPF);
-        mask_cpf.addTextChangedListener(com.example.cadastrodeclientes.Mask.insert("###.###.###-##", mask_cpf));
+        mask_cpf.addTextChangedListener(Mask.insert("###.###.###-##", mask_cpf));
+
+        //Mascara para o telefone residencial
+        final EditText mask_phone = (EditText) findViewById(R.id.editTelefone);
+        mask_phone.addTextChangedListener(Mask.insert("(##)####-####", mask_phone));
 
         cep = findViewById(R.id.editCep);
         logradouro = findViewById(R.id.txtLogradouro);
@@ -151,7 +155,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             return;
         }
 
-        if(cep.getText().toString().isEmpty() && cep.getText().length() < 8){
+        if(cep.getText().toString().isEmpty() || cep.getText().length() != 8){
             Toast.makeText(this, "Campo CEP de preenchimento OBRIGATÓRIO!", Toast.LENGTH_SHORT).show();
             cep.requestFocus();
             return;
